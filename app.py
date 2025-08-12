@@ -1,6 +1,6 @@
 import os
 import subprocess
-import boto3
+# import boto3
 import base64
 import uuid
 # from dotenv import load_dotenv
@@ -20,10 +20,9 @@ def handler(event, context):
             }
         
         working_dir = '/tmp'
-
         unique_id = uuid.uuid4()
+
         base_filename = f'document_{unique_id}'
-        output_filename = event.get('output_filename')
         tex_file_path = os.path.join(working_dir, f'{base_filename}.tex')
         pdf_file_path = os.path.join(working_dir, f'{base_filename}.pdf')
         
@@ -61,8 +60,7 @@ def handler(event, context):
         return {
             'statusCode': 200,
             'headers': {
-                'Content-Type': 'application/pdf',
-                'Content-Disposition': f'attachment; filename="{output_filename}"'
+                'Content-Type': 'application/pdf'
             },
             'body': encoded_string,
             'isBase64Encoded': True
