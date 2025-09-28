@@ -10,7 +10,11 @@ WORKDIR /var/task
 #    - '--no-install-recommends' helps keep the image size smaller.
 RUN apt-get update && apt-get install -y \
     texlive-latex-base \
+    texlive-latex-recommended \
     texlive-latex-extra \
+    texlive-fonts-recommended \
+    texlive-fonts-extra \
+    lmodern \
     cmake \
     build-essential \
     --no-install-recommends \
